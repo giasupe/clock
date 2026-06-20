@@ -1,29 +1,28 @@
-var g_now;
+function dayRaito(now) {
+    var result = parseInt((now.getHours() * 60 + now.getMinutes()) / (24 * 60) * 100);
+
+    var bar = "";
+    for (var i = 0; i < result; i++) {
+        bar = bar + "|";
+    }
+    while (bar.length < 100) {
+        bar = bar + ".";
+    }
+
+    var hourglass = document.getElementById("hourglass");
+    if (hourglass) {
+        hourglass.textContent = `[${bar}]`;
+    }
+}
 
 function updateClock() {
     const now = new Date();
-    g_now = now;
-    const hours = String(now.getHours()).padStart(2, `0`);
-    const minutes = String(now.getMinutes()).padStart(2,`0`);
-    const seconds = String(now.getSeconds()).padStart(2,`0`);
-    document.getElementById('Clock').textContent = `${hours}:${minutes}:${seconds}`;
+    const hours = String(now.getHours()).padStart(2, "0");
+    const minutes = String(now.getMinutes()).padStart(2, "0");
+    const seconds = String(now.getSeconds()).padStart(2, "0");
+    document.getElementById("Clock").textContent = `${hours}:${minutes}:${seconds}`;
+    dayRaito(now);
 }
+
 updateClock();
 setInterval(updateClock, 1000);
-
-function dayRaito() {
-    var Result = 0;
-    Result = (g_now.getHours()*60 + g_now.getMinutes()) / (24*60) *100;
-    Result = parseInt(Result)
-
-    var bar = "";
-    for(var i = 0; i < Result; i++) 
-    {
-        bar = bar + "|"
-    }
-    bar = bar.padEnd(100,`.`);
-
-    document.getElementById(`hourglass`).textContent = `[${bar}]`;
-}
-dayRaito();
-setInterval(dayRaito, 1000);
