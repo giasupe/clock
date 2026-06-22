@@ -2,3 +2,12 @@ body {
     font-family: "MS ゴシック";
     text-align: center;
 }
+
+#trackingclock {
+    position: absolute;
+    font-family: "DotGothic16";
+    font-size: 12px;
+    font-style: Regular;
+    user-select: none;
+    pointer-events: none;
+}
