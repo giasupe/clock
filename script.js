@@ -22,7 +22,13 @@ function updateClock() {
     const seconds = String(now.getSeconds()).padStart(2, "0");
     document.getElementById("Clock").textContent = `${hours}:${minutes}:${seconds}`;
     dayRaito(now);
+    document.getElementById("miniClock").textContent = `${hours}:${minutes}`;
 }
-
 updateClock();
 setInterval(updateClock, 1000);
+
+function trackingCursor(event) {
+    const pointer = document.getElementById("trackingclock");
+    pointer.style.transform = `translate(${event.clientX + 10}px, ${event.clientY - 120}px)`;
+}
+document.addEventListener("mousemove", trackingCursor);
